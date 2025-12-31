@@ -1,5 +1,5 @@
 // https://github.com/adryd325/oneko.js
-(function fathorse() {
+const fathorse = function (cfg = {}) {
     document.getElementById("fathorse")?.remove();
 
     // generated
@@ -7,9 +7,11 @@
     const gridX = 9, gridY = 8;
 
     const config = {
-        speed: 30,
-        framerate: 24,
-        size: 120,
+        speed: cfg.speed ?? 30,
+        framerate: cfg.fps ?? 24,
+        size: cfg.size ?? 120,
+        fade: cfg.fade ?? true,
+        shake: cfg.shake || window._horseShake
     };
     const horsePos = {
         x: config.size / 2,
@@ -20,7 +22,6 @@
         y: horsePos.y
     };
 
-    const canShake = !document.querySelector("html.reduce-motion") && window._horseShake;
     const fathorse = document.createElement("div");
 
     const hz = 1000 / config.framerate;
@@ -48,7 +49,7 @@
         fathorse.style.left = `${horsePos.x - config.size / 2}px`;
         fathorse.style.top = `${horsePos.y - config.size / 2}px`;
 
-        if (!canShake) return;
+        if (!config.shake) return;
 
         if (shakeX !== 0 || shakeY !== 0) {
             document.body.style.transform = `translate3d(${shakeX}px, ${shakeY}px, 0)`;
@@ -63,7 +64,7 @@
     }
 
     function frame() {
-        if (shakeUntil > Date.now() && canShake) {
+        if (shakeUntil > Date.now() && config.shake) {
             shakeX = Math.floor(Math.random() * 6 - 3);
             shakeY = Math.floor(Math.random() * 6 - 3);
         } else {
@@ -106,11 +107,13 @@
             update(direction);
         }
 
-        const hoverLimit = config.size * 0.25;
-        if (dist <= hoverLimit) {
-            fathorse.style.opacity = `${15 + (dist / hoverLimit) * 85}%`;
-        } else {
-            fathorse.style.opacity = "";
+        if (config.fade) {
+            const hoverLimit = config.size * 0.25;
+            if (dist <= hoverLimit) {
+                fathorse.style.opacity = `${15 + (dist / hoverLimit) * 85}%`;
+            } else {
+                fathorse.style.opacity = "";
+            }
         }
     }
 
@@ -130,7 +133,7 @@
     fathorse.style.transition = "opacity 0.1s linear";
     document.body.appendChild(fathorse);
 
-    if (canShake) document.body.style.willChange = "transform";
+    if (config.shake) document.body.style.willChange = "transform";
 
     window.addEventListener("mousemove", ev => {
         mousePos.x = ev.clientX;
@@ -138,4 +141,5 @@
     });
 
     requestAnimationFrame(lifecycle);
-})();
+};
+fathorse;

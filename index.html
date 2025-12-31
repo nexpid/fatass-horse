@@ -49,9 +49,49 @@
         pharetra nibh id dolor ultricies auctor. Integer et cursus urna. Phasellus porttitor magna vitae cursus
         fermentum. Donec risus dolor, pellentesque et aliquet sit amet, dignissim sit amet neque. Donec ornare blandit
         diam nec pulvinar.</p>
+    <div>
+        <input type="range" name="speed" id="speed" min="10" max="500" value="30" step="5" />
+        <label for="speed">Speed</label>
+    </div>
+    <div>
+        <input type="range" name="fps" id="fps" min="2" max="120" value="24" step="2" />
+        <label for="fps">Framerate</label>
+    </div>
+    <div>
+        <input type="range" name="size" id="size" min="10" max="500" value="120" step="5" />
+        <label for="size">Size</label>
+    </div>
+    <div>
+        <input type="checkbox" name="shake" id="shake">
+        <label for="shake">Shake</label>
+    </div>
+    <div>
+        <input type="checkbox" name="fade" id="fade" checked>
+        <label for="fade">Fade</label>
+    </div>
     <script src="./horse.js"></script>
     <script>
-        document.getElementById("fathorse").style.backgroundImage = 'url("./sheet.png")';
+        function update() {
+            document.querySelector("label[for=speed]").textContent = `Speed: ${speed.value}`;
+            document.querySelector("label[for=fps]").textContent = `Framerate: ${fps.value}`;
+            document.querySelector("label[for=size]").textContent = `Size: ${size.value}`;
+
+            fathorse({
+                speed: speed.value,
+                fps: fps.value,
+                size: size.value,
+                fade: fade.checked,
+                shake: shake.checked,
+            });
+            document.getElementById("fathorse").style.backgroundImage = 'url("./sheet.png")';
+        }
+
+        update();
+        speed.addEventListener("change", update);
+        fps.addEventListener("change", update);
+        size.addEventListener("change", update);
+        shake.addEventListener("change", update);
+        fade.addEventListener("change", update);
     </script>
 </body>
 
