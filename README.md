@@ -1,18 +1,18 @@
 # fatass horse
 
-oneko cat but fatass horse. [see example](https://nexpid.github.io/fat-horse)
+oneko cat but fatass horse. [see example](https://nexpid.github.io/fatass-horse)
 
 ## usage
 
 ```js
-fetch("https://nexpid.github.io/fat-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)());
+fetch("https://nexpid.github.io/fatass-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)());
 ```
 
 with the shake for an authentic fatass horse experience:
 
 ```js
 window._horseShake = true;
-fetch("https://nexpid.github.io/fat-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)());
+fetch("https://nexpid.github.io/fatass-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)());
 ```
 
 you can also customize
@@ -27,7 +27,7 @@ you can also customize
 like so:
 
 ```js
-fetch("https://nexpid.github.io/fat-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)({ speed: x, fps: x, size: x, fade: false, freeroam: false, shake: true }));
+fetch("https://nexpid.github.io/fatass-horse/horse.js").then(x=>x.text()).then(x=>(0,eval)(x)({ speed: x, fps: x, size: x, fade: false, freeroam: false, shake: true }));
 ```
 
 ## vencord
