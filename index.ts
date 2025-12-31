@@ -31,13 +31,19 @@ const settings = definePluginSettings({
         onChange: load
     },
     fade: {
-        description: "Whether the horse fades when the cursor is near",
+        description: "If the horse should fade when the cursor is near",
+        type: OptionType.BOOLEAN,
+        default: true,
+        onChange: load
+    },
+    freeroam: {
+        description: "If the horse should roam freely when idle",
         type: OptionType.BOOLEAN,
         default: true,
         onChange: load
     },
     shake: {
-        description: "Whether the horse should shake the window while walking",
+        description: "If the horse should shake the window when it's walking",
         type: OptionType.BOOLEAN,
         default: false,
         onChange: load
@@ -52,6 +58,7 @@ function load() {
         fps: settings.store.fps,
         size: settings.store.size,
         fade: settings.store.fade,
+        freeroam: settings.store.freeroam,
         shake: settings.store.shake
     });
 }
