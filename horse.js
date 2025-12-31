@@ -124,7 +124,7 @@
     fathorse.style.pointerEvents = "none";
     fathorse.style.imageRendering = "pixelated";
     fathorse.style.zIndex = 2147483647;
-    fathorse.style.backgroundImage = 'url("https://files.catbox.moe/6wtngj.png")';
+    fathorse.style.backgroundImage = 'url("https://raw.githubusercontent.com/nexpid/fat-horse/refs/heads/main/sheet.png")';
     fathorse.style.backgroundSize = `${gridX * config.size}px ${gridY * config.size}px`;
     fathorse.style.willChange = "left, top, background-position";
     fathorse.style.transition = "opacity 0.1s linear";
