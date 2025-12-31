@@ -93,7 +93,7 @@ const fathorse = function (cfg = {}) {
 
         const speed = isRoaming ? Math.min(config.speed, freeroamSpeed) : config.speed;
 
-        if (dist >= Math.max(speed, config.size / 2)) {
+        if (dist >= Math.max(speed, config.size * 0.7)) {
             animationFrame++;
 
             if (isRoaming) nextMove = Date.now() + freeroamInterval;
@@ -117,7 +117,7 @@ const fathorse = function (cfg = {}) {
             update(direction);
         }
 
-        const hoverLimit = config.size * 0.25;
+        const hoverLimit = config.size * 0.6;
         if (isRoaming) {
             fathorse.style.opacity = "80%";
         } else if (config.fade && dist <= hoverLimit) {
